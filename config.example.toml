@@ -1,0 +1,42 @@
+# Calendar settings
+[calendar]
+id = "primary"
+timezone = "America/New_York"
+# Optional override; defaults to template keys when omitted
+title_filters = ["marcar royal gathering", "example123"]
+
+# Map event title substrings to message templates
+[templates]
+"marcar royal gathering" = "Reminder for {{groupname}} about {{title}}."
+"example123" = "Hello {{groupname}}! Event: {{title}}"
+
+# Regex to extract the group name from the event description
+[groupname]
+regex = "Group Name:\\s*(.+)"
+flags = "i"
+capture_group = 1
+
+# Google Sheets settings
+[sheets]
+id = "GOOGLE_SHEET_ID"
+range = "Sheet1!A:Z"
+group_name_header = "Group name"
+group_id_header = "Group id"
+header_row = 1
+
+# Wassenger API settings
+[wassenger]
+api_base = "https://api.wassenger.com/v1"
+send_endpoint = "/messages"
+groups_endpoint = "/devices/{deviceId}/groups"
+device_id = "WASSENGER_DEVICE_ID"
+# Group IDs are typically WIDs like "1234567890-123456@g.us"
+
+# Webhook settings
+[webhook]
+path = "/webhook"
+port = 3000
+
+# Local state
+[state]
+path = ".state/processed-events.json"
